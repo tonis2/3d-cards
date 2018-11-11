@@ -80,15 +80,16 @@ class Cards extends Soo {
                     transform-style: preserve-3d;
                     transform: rotateX(calc(var(--mouseY) * 1deg)) rotateY(calc(var(--mouseX) * 1deg));
                     min-width: 595px;
-                    min-height: 300px;
+                    min-height: auto;
                 }
                 .cards {
                     display:grid;
                     width:100%;
                     height:100%;
-                    grid-template-columns: repeat(3, 20vw);
+                    grid-template-columns: repeat(3, 15vw);
                     grid-auto-rows:max-content;
                     grid-column-gap:30px;
+                    grid-row-gap:30px;
                 }
                 
                 img {
