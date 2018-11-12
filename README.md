@@ -29,3 +29,5 @@ And then use it like this.
 
 
 `card-element` accepts attributes `name`, `background`, `img`.
+
+View it [live](https://tonis2.github.io/parallax-cards/)
