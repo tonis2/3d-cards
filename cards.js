@@ -33,7 +33,14 @@ class Card extends Soo {
                     color:white;
                     font-size:20px;
                     z-index: 2;
-                    text-shadow: calc(var(--mouseX) * -0.2px) calc(var(--mouseY) * -0.2px) 1px black;
+                    text-shadow: calc(var(--mouseX) * -0.2px) calc(var(--mouseY) * -0.2px) 0.5px rgba(0,0,0,0.6);
+                    transform: translateZ(20px);
+                }
+
+                @media screen and (max-width: 1024px) { 
+                  .card {
+                    height:200px;
+                  }
                 }
                `
     }
@@ -59,12 +66,11 @@ class Cards extends Soo {
                 this.style.setProperty('--mouseY', `${yValue}`);
             })
         });
-
-        document.addEventListener("devicemotion", (event) => {
+        window.addEventListener("deviceorientation", (event) => {
             window.requestAnimationFrame(() => {
-                const yValue = calcValue(event.accelerationIncludingGravity.y, window.innerHeight);
-                const xValue = calcValue(event.accelerationIncludingGravity.x, window.innerWidth);
-
+                const yValue = calcValue(event.beta * 5, window.innerHeight);
+                const xValue = calcValue(event.gamma * 5, window.innerWidth);
+    
                 this.style.setProperty('--mouseX', `${xValue}`);
                 this.style.setProperty('--mouseY', `${yValue}`);
             })
@@ -113,11 +119,12 @@ class Cards extends Soo {
                         min-width:80vw;
                         padding:0 10px;
                         justify-content:center;
+                        margin:50px 0;
                     }
                     .cards {
-                        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-                        min-width:60vw;
-                        padding:10px 0;
+                        grid-template-columns: repeat(auto-fill, minmax(60vw, 0.9fr));
+                        min-width:100%;
+                        height:100%;
                     }
                   }
               
