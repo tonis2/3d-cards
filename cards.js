@@ -59,6 +59,16 @@ class Cards extends Soo {
                 this.style.setProperty('--mouseY', `${yValue}`);
             })
         });
+
+        document.addEventListener("devicemotion", (event) => {
+            window.requestAnimationFrame(() => {
+                const yValue = calcValue(event.accelerationIncludingGravity.y, window.innerHeight);
+                const xValue = calcValue(event.accelerationIncludingGravity.x, window.innerWidth);
+
+                this.style.setProperty('--mouseX', `${xValue}`);
+                this.style.setProperty('--mouseY', `${yValue}`);
+            })
+        });
     }
 
 
@@ -81,6 +91,8 @@ class Cards extends Soo {
                     transform: rotateX(calc(var(--mouseY) * 1deg)) rotateY(calc(var(--mouseX) * 1deg));
                     min-width: 595px;
                     min-height: auto;
+                    width:95%;
+                    justify-self:center;
                 }
                 .cards {
                     display:grid;
@@ -95,6 +107,19 @@ class Cards extends Soo {
                 img {
                    width:100px;
                 }
+
+                @media screen and (max-width: 1024px) {
+                    :host {
+                        min-width:80vw;
+                        padding:0 10px;
+                        justify-content:center;
+                    }
+                    .cards {
+                        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                        min-width:60vw;
+                        padding:10px 0;
+                    }
+                  }
               
                 `
     }
