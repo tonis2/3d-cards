@@ -33,8 +33,7 @@ class Card extends Soo {
                     color:white;
                     font-size:20px;
                     z-index: 2;
-                    text-shadow: calc(var(--mouseX) * -0.2px) calc(var(--mouseY) * -0.2px) 0.5px rgba(0,0,0,0.6);
-                    transform: translateZ(20px);
+                    text-shadow: calc(var(--mouseX) * -0.2px) calc(var(--mouseY) * -0.2px) 0.5px rgba(0,0,0,0.6);x);
                 }
 
                 @media screen and (max-width: 1024px) { 
